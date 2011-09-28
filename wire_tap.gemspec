@@ -7,9 +7,10 @@ Gem::Specification.new do |s|
   s.version     = WireTap::VERSION
   s.authors     = ["Jennifer Smith"]
   s.email       = ["jennifer@home"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "https://github.com/jennifersmith/wire_tap"
+  s.summary     = "Rack middleware that logs API calls made to a file for documentation"
+  s.description = "Rack middleware that logs API calls made to a file for documentation. This gem is being developed for the RapidFTR project - www.rapidftr.com"
+ 
 
   s.rubyforge_project = "wire_tap"
 
