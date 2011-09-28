@@ -22,5 +22,7 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency "rack"
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+	s.add_development_dependency "factory_girl"
+  s.add_development_dependency "i18n"
+	# s.add_runtime_dependency "rest-client"
 end
