@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "wire_tap"
   s.version     = WireTap::VERSION
   s.authors     = ["Jennifer Smith"]
-  s.email       = ["jennifer@home"]
+  s.email       = ["jensmith@thoughtworks.com"]
   s.homepage    = "https://github.com/jennifersmith/wire_tap"
   s.summary     = "Rack middleware that logs API calls made to a file for documentation"
   s.description = "Rack middleware that logs API calls made to a file for documentation. This gem is being developed for the RapidFTR project - www.rapidftr.com"
@@ -20,9 +20,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
 	s.add_runtime_dependency "rack"
-  # specify any dependencies here; for example:
+  s.add_runtime_dependency "contracted"
+	# specify any dependencies here; for example:
   s.add_development_dependency "rspec"
 	s.add_development_dependency "factory_girl"
   s.add_development_dependency "i18n"
-	# s.add_runtime_dependency "rest-client"
 end
