@@ -12,9 +12,7 @@ describe WireTap::Listener do
 			end
 			let(:wrapped_app){ 
 				class SinatraApp < BasicWebApp
-					get "/foo" do
-						"Hello world"
-					end
+					get("/foo") { "Hello world"}
 				end
 			  SinatraApp.new
 			}

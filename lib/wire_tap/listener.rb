@@ -1,4 +1,3 @@
-
 module WireTap
 	class Transaction
 		attr_reader :method, :path, :request, :status, :body
@@ -6,7 +5,6 @@ module WireTap
 			@method = env["REQUEST_METHOD"]
 			@path = env["PATH_INFO"]
 			@request = env["rack.input"].read
-			puts response.inspect
 			@status,@headers,@body = response
 		end
 		def content_type
