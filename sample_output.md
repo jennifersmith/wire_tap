@@ -43,6 +43,7 @@ Updating a child record
 * Return status code: 204
 
 Sample request:
+
 ```
 location=UK
 has_siblings=TRUE
