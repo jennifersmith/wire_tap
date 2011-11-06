@@ -1,9 +1,16 @@
+
 module WireTap
 	class Transaction
-		attr_reader :request, :response
-		def initialize env
-			puts env.inspect
-			@request = Request.new env
+		attr_reader :method, :path, :request, :status, :body
+		def initialize env, response
+			@method = env["REQUEST_METHOD"]
+			@path = env["PATH_INFO"]
+			@request = env["rack.input"].read
+			puts response.inspect
+			@status,@headers,@body = response
+		end
+		def content_type
+			@headers["Content-Type"]
 		end
 	end
 	class Request
@@ -19,8 +26,9 @@ module WireTap
 			@transactions = []
 		end
 		def call(env)
-			@transactions << Transaction.new(env)
-			@app.call(env)		
+			response = @app.call(env)		
+			@transactions << Transaction.new(env, response)
+			response
 		end
 	end
 end

@@ -25,5 +25,6 @@ Gem::Specification.new do |s|
 	s.add_development_dependency "rspec"
 	s.add_development_dependency "rack-test"
 	s.add_development_dependency "factory_girl"
-  s.add_development_dependency "i18n"
+	s.add_development_dependency "i18n"
+	s.add_development_dependency "sinatra"
 end

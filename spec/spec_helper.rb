@@ -1,8 +1,9 @@
 require 'rspec'
 require "factory_girl"
 require 'rack/test'
-require "factories" #wtf
 require 'wire_tap'
+
+Dir['./spec/support/**/*.rb'].map {|f| require f}
 
 class FakeRackApp
 	def call(env)

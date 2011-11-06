@@ -4,18 +4,28 @@ describe WireTap::Listener do
 	context "saving request details" do
 		include Rack::Test::Methods
 		let(:app){
-			WireTap::Listener.new(FakeRackApp.new)
+			WireTap::Listener.new(wrapped_app)
 		}
 		context "receiving a get request" do
 			before(:each) do
 				get "/foo"
 			end
-			describe "the recorded transaction" do
-				let(:transaction) {app.transactions.last}
-				describe "request" do
-					subject {transaction.request} # what is a saner term for a pair of request/response
-					its(:method){subject.should == "GET"}
+			let(:wrapped_app){ 
+				class SinatraApp < BasicWebApp
+					get "/foo" do
+						"Hello world"
+					end
 				end
+			  SinatraApp.new
+			}
+			describe "the recorded transaction" do
+				subject {app.transactions.last}
+				its(:method){subject.should == "GET"}
+				its(:path){subject.should == "/foo"}
+				its(:request){subject.should be_empty}
+				its(:status){subject.should == 200}
+				its(:content_type){subject.should match /^text\/html/}
+				its(:body){subject.should==["Hello world"]}
 			end
 		end
 
