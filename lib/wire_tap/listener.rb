@@ -1,22 +1,6 @@
+require 'cgi'
+require 'wire_tap/parsers/request_parser'
 module WireTap
-	class Transaction
-		attr_reader :method, :path, :request, :status, :body
-		def initialize env, response
-			@method = env["REQUEST_METHOD"]
-			@path = env["PATH_INFO"]
-			@request = env["rack.input"].read
-			@status,@headers,@body = response
-		end
-		def content_type
-			@headers["Content-Type"]
-		end
-	end
-	class Request
-		attr_reader :method
-		def initialize env
-			@method = env["REQUEST_METHOD"]
-		end
-	end
 	class Listener
 		attr_reader :transactions
 		def initialize app
@@ -25,8 +9,26 @@ module WireTap
 		end
 		def call(env)
 			response = @app.call(env)		
-			@transactions << Transaction.new(env, response)
+			@transactions << parse_transaction(env, response)
 			response
+		end
+		def parse_request(request)
+			RequestParser.parse(request)
+		end
+		def parse_response(response)
+			status,headers,body = response
+			{
+				:status => status,
+				:content_type => headers["Content-Type"],
+				:body => body
+			}
+		end
+		def parse_transaction(env, response)
+			{
+				:method=>env["REQUEST_METHOD"],
+				:path=>env["PATH_INFO"],
+				:request => parse_request(env["rack.input"].read)	
+			}.merge(parse_response(response))
 		end
 	end
 end
