@@ -1,5 +1,5 @@
 require 'cgi'
-require 'wire_tap/parsers/request_parser'
+require 'wire_tap/request_parser'
 module WireTap
 	class Listener
 		attr_reader :transactions
