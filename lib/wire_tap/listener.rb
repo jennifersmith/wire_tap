@@ -30,5 +30,8 @@ module WireTap
 				:request => parse_request(env["rack.input"].read)	
 			}.merge(parse_response(response))
 		end
+		def wrapped_app
+			@app
+		end
 	end
 end

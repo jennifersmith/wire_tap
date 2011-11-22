@@ -1,9 +1,9 @@
 require 'rspec'
 require "factory_girl"
 require 'rack/test'
-require 'wire_tap'
-
-Dir['./lib/**/*.rb'].map {|f| require f}
+require 'wire_tap/main'
+require 'wire_tap/request_parser'
+require 'wire_tap/listener'
 Dir['./spec/support/**/*.rb'].map {|f| require f}
 
 class FakeRackApp
