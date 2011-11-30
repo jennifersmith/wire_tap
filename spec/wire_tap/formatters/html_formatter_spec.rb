@@ -5,16 +5,14 @@ module WireTap
       before (:each) do
         @formatter = HtmlFormatter.new
       end
-      let(:document) {
+      subject {
         Nokogiri::HTML(@formatter.format(input))
       } 
       context "with no requests" do
         let(:input){ double(WireTap::Listener)}
         describe "Basic header information" do
-          describe "title" do
-            subject{document.title}
-            it{ should == "WireTap output"}
-          end
+          its (:title) { should == "WireTap output"}
+  
         end
       end
     end
