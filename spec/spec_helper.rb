@@ -1,8 +1,10 @@
 require 'rspec'
 require 'fileutils'
+require 'nokogiri'
 require "factory_girl"
 require 'rack/test'
 require 'wire_tap/main'
+require 'wire_tap/formatters/html_formatter'
 require 'wire_tap/request_parser'
 require 'wire_tap/listener'
 Dir['./spec/support/**/*.rb'].map {|f| require f}
