@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "wire_tap"
   s.version     = WireTap::VERSION
   s.authors     = ["Jennifer Smith"]
-  s.email       = ["jensmith@thoughtworks.com"]
+  s.email       = ["aaaaadsasdasdasdasd@thoughtworks.com"]
   s.homepage    = "https://github.com/jennifersmith/wire_tap"
   s.summary     = "Rack middleware that logs API calls made to a file for documentation"
   s.description = "Rack middleware that logs API calls made to a file for documentation. This gem is being developed for the RapidFTR project - www.rapidftr.com"
